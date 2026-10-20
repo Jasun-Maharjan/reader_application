@@ -18,18 +18,51 @@ class MyApp extends StatelessWidget {
 
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon:Icon(Icons.home),label:'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.home),label:'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.business),label:'Business'),
             BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Bookmark'),
           ],
           ),
      
-        body: const Center(
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Text('Hi'),
-          
-          ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+          },
+          child:const Icon(Icons.add),
+        ),
+
+        body: Padding(
+        padding: const .all(8.0),
+        child: SearchAnchor(
+          builder: (BuildContext context, SearchController controller){
+            return Searchbar(
+              controller: controller,
+              padding: const WidgetStatePropertyAll<EdgeInsets>(
+              EdgeInsets.symmetric(horizontal: 16.0),
+            ),
+            onTap:({
+              controller.openView();
+            },
+            onChanged: (_){
+              controller.openView();
+            },
+            leading: const Icon(Icons.search),
+            trailing: <Widget>[
+              Tooltip(
+                message: 'Change brightness mode',
+                 child: IconButton(
+                  isSelected: isDark,
+                  onPressed: () {
+                    setState(() {
+                      isDark = !isDark;
+                    });
+                  },
+                 ),
+              ),
+            ],
+            ),
+            );
+          },
+        ),
         ),
       ),
     );
