@@ -12,15 +12,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home:Scaffold(
         appBar: AppBar(
+          title: const Text("4th Wall"),
+          backgroundColor: Colors.pink,
+        ),
+
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon:Icon(Icons.home),label:'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.business),label:'Business'),
+            BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Bookmark'),
+          ],
+          ),
+     
+        body: const Center(
+          child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Text('Hi'),
           
-          body: Container(
-            child: const Text('Hi'),
-            margin: const EdgeInsets.all(100),
-            padding: const EdgeInsets.all(10),
-            color:Colors.red,
-            height: 100,
-            width: 100
-          
+          ),
         ),
       ),
     );
